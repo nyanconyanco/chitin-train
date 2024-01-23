@@ -16,6 +16,7 @@ header{
 }
 
 .clock{
+    margin: auto;
     vertical-align: middle;
     color: white;
     font-size: 10px;
@@ -27,6 +28,7 @@ main{
 
 .txt{
     height: 50%;
+    margin: auto;
 }
 
 footer{
