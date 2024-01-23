@@ -1,1 +1,59 @@
-<h1>hello world</h1>
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="style.css">
+    <script>
+    </script>
+</head>
+<body>
+	<header>
+        <span class="clock" id="Japan_z444" style="font-size:6vh"></span>
+        <script src="//widget.time.is/ja.js"></script>
+        <script>
+            time_is_widget.init({Japan_z444:{template:"DATE TIME", date_format:"yy/monthnum"}});
+        </script>
+    </header>    
+    <main>
+        <div class="txt">
+            現在
+            <span id="now"></span>
+        </div>
+
+        <div class="txt">
+            最高
+            <span id="high"></span>            
+            </div>
+    </main>  
+    <footer>
+        <div class="bar"></div>
+        <iframe id="map" src="https://maps.google.com/maps?output=embed&q=35.6702285,139.7026976&t=m&hl=ja&z=14"></iframe>
+    </footer>
+
+    <script>
+        navigator.geolocation.watchPosition(position => {
+                const data = {
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    speed: position.coords.speed || 0
+                };
+
+                // ブラウザのコンソールに位置情報と速度情報を表示
+                console.log('Latitude:', data.latitude);
+                console.log('Longitude:', data.longitude);
+                console.log('Speed:', data.speed);
+                window.aleart(date.latitude);
+
+            }, error => {
+                console.error(error.message);
+            });
+
+
+
+    </script>
+
+</body>
+
+</html>
