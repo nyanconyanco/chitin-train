@@ -20,15 +20,15 @@
     <main>
       <div class="txt">
         現在
-        <span id="now">0.0</span>
-        km
+        <span id="now">0</span>
+        km/h
         <span id="position_view"></span>
       </div>
 
       <div class="txt">
         最高
-        <span id="high">0.0</span>
-        km
+        <span id="high">0</span>
+        km/h
       </div>
     </main>
 
@@ -82,8 +82,13 @@
       function test2(position) {
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
+        var getspeed = position.coords.speed;
 
-        var speed = position.coords.speed;
+        if(getspeed === null ){
+          var speed = 0;
+        }else{
+          var speed = getspeed * 3.6;
+        }
 
         if (speed > high) {
           high = speed;
