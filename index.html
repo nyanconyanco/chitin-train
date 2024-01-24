@@ -64,33 +64,41 @@
 
     <script>
       var high = 0;
-      
-      window.addEventListener("DOMContentLoaded",() => {
-        watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
-      })
+
+      window.addEventListener("DOMContentLoaded", () => {
+        watch_id = navigator.geolocation.watchPosition(
+          test2,
+          function (e) {
+            alert(e.message);
+          },
+          { enableHighAccuracy: true, timeout: 20000, maximumAge: 2000 }
+        );
+      });
 
       function clear() {
-          navigator.geolocation.clearWatch(watch_id);
+        navigator.geolocation.clearWatch(watch_id);
       }
 
       function test2(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
 
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
+        var speed = position.coords.speed;
 
-            var speed = math.round(position.coords.speed);
-          
-          
-          if(speed > high){
-            high = speed;
-          }
+        if (speed > high) {
+          high = speed;
+        }
 
-          var url = "https://maps.google.com/maps?output=embed&q=" + latitude + "," + longitude + "&t=m&hl=ja&z=14";
-          document.getElementById('map').setAttribute('src', url);
+        var url =
+          "https://maps.google.com/maps?output=embed&q=" +
+          latitude +
+          "," +
+          longitude +
+          "&t=m&hl=ja&z=14";
+        document.getElementById("map").setAttribute("src", url);
 
-          document.getElementById('now').innerHTML = speed;
-          document.getElementById('high').innerHTML = high;
-
+        document.getElementById("now").innerHTML = speed;
+        document.getElementById("high").innerHTML = high;
       }
     </script>
   </body>
