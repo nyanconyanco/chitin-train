@@ -61,11 +61,11 @@ setInterval('showClock2()',1000);
                 console.log('Latitude:', data.latitude);
                 console.log('Longitude:', data.longitude);
                 console.log('Speed:', data.speed);
-                window.alert(date.latitude);
+                alert(date.latitude);
 
             }, error => {
                 console.error(error.message);
-                window.alert(error.message)
+                alert(error.message)
             });
 
 
