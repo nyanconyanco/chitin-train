@@ -78,11 +78,7 @@
           var latitude = position.coords.latitude;
           var longitude = position.coords.longitude;
 
-          if(position.coords.speed){
             var speed = math.round(position.coords.speed);
-          }else{
-            var speed = 0;
-          }
           
           
           if(speed > high){
