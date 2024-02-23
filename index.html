@@ -87,11 +87,11 @@
         if(getspeed === null ){
           var speed = 0;
         }else{
-          var speed = getspeed * 3.6;
+          var speed = Math.floor(getspeed * 3.6);
         }
 
         if (speed > high) {
-          high = speed;
+          high = Math.floor(speed);
         }
 
         var url =
