@@ -11,7 +11,6 @@
       content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'"
     />
     <link rel="stylesheet" href="./style.css" />
-    <script></script>
   </head>
   <body>
     <header>
@@ -30,14 +29,20 @@
         <span id="high">0</span>
         km/h
       </div>
+      <button class="button" onclick="reload()">地図更新</button>
+
     </main>
 
     <footer>
+
       <div class="bar"></div>
       <iframe
         id="map"
         src="https://maps.google.com/maps?output=embed&q=35.6702285,139.7026976&t=m&hl=ja&z=14"
       ></iframe>
+
+      <input type="hidden" id="mapurl" name="">
+
     </footer>
 
     <script>
@@ -58,7 +63,16 @@
         var nowSec = set2fig(nowTime.getSeconds());
         var msg = nowHour + ":" + nowMin + ":" + nowSec;
         document.getElementById("clock").innerHTML = msg;
+        if (nowSec === "00" || nowSec === 30) {
+          if (document.getElementById("mapurl").name !== document.getElementById("mapurl").src) {
+            console.log(document.getElementById("mapurl").name);
+            document.getElementById("map").setAttribute("src", document.getElementById("mapurl").name);
+          }
+          
+        }
       }
+
+      
       setInterval("showClock2()", 1000);
     </script>
 
@@ -73,6 +87,12 @@
           },
           { enableHighAccuracy: true, timeout: 20000, maximumAge: 2000 }
         );
+
+          
+        
+
+
+      
       });
 
       function clear() {
@@ -100,11 +120,23 @@
           "," +
           longitude +
           "&t=m&hl=ja&z=14";
-        document.getElementById("map").setAttribute("src", url);
+        document.getElementById("mapurl").setAttribute("name", url);
 
         document.getElementById("now").innerHTML = speed;
         document.getElementById("high").innerHTML = high;
+
+
+
       }
+      function reload(){
+
+console.log("reload");
+console.log(document.getElementById("mapurl").name);
+  document.getElementById("map").setAttribute("src", document.getElementById("mapurl").name);
+
+}
+
+
     </script>
   </body>
 </html>
