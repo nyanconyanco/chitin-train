@@ -83,6 +83,6 @@ footer{
   }
   
   /* ホバー時（カーソルをのせた時）の見た目 */
-  .button:hover {
+  .button:active {
     background-color: #064fda; /* 背景色 */
   }
